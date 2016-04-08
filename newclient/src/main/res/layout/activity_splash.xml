@@ -3,11 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GuideActivity">
-
-    <android.support.v4.view.ViewPager
+    android:id="@+id/rl_splash_bg"
+    android:background="@drawable/splash_bg_newyear"
+    tools:context="com.example.administrator.newclient.SplashActivity">
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/vp_guide_show">
-    </android.support.v4.view.ViewPager>
+        android:src="@drawable/splash_horse_newyear"/>
 </RelativeLayout>
