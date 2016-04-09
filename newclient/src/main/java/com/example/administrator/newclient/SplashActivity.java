@@ -2,6 +2,7 @@ package com.example.administrator.newclient;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -15,7 +16,7 @@ import android.widget.RelativeLayout;
 * */
 //实现开启app的动画界面
 public class SplashActivity extends Activity {
-
+    SharedPreferences sp;
     private RelativeLayout rl_splash_bg;
 
     @Override
@@ -23,7 +24,7 @@ public class SplashActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         rl_splash_bg = (RelativeLayout) findViewById(R.id.rl_splash_bg);
-
+        sp=getSharedPreferences("config",MODE_PRIVATE);
         AnimationSet as = new AnimationSet(true);//组合动画的时候需要
         RotateAnimation rotateAnimation = new RotateAnimation(0, 360, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         rotateAnimation.setDuration(3000);
@@ -48,7 +49,14 @@ public class SplashActivity extends Activity {
             @Override
             public void onAnimationEnd(Animation animation) {
                     //动画结束的时候调用
-                startActivity(new Intent(SplashActivity.this,GuideActivity.class));
+                if (sp.getBoolean("firsttime",true)) {//判断是否是第一次调用 不是第一次就掉过向导页
+                    SharedPreferences.Editor edit = sp.edit();
+                    edit.putBoolean("firsttime",false);
+                    edit.commit();
+                    startActivity(new Intent(SplashActivity.this,GuideActivity.class));
+                }else {
+                    startActivity(new Intent(SplashActivity.this,HomeActivity.class));
+                }
                 finish();//将当前的activity从任务栈清除
             }
 
