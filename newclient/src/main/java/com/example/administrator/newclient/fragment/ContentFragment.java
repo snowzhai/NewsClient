@@ -39,18 +39,23 @@ public class ContentFragment extends Fragment {
                 switch (checkedId){
                     case R.id.rb_contentfragment_home:
                         vp_contentfragment_pager.setCurrentItem(0,false);
+                        pagelist.get(0).initData();
                         break;
                     case  R.id.rb_contentfragment_newscenter:
                         vp_contentfragment_pager.setCurrentItem(1,false);
+                        pagelist.get(1).initData();
                         break;
                     case  R.id.rb_contentfragment_gov:
                         vp_contentfragment_pager.setCurrentItem(2,false);
+                        pagelist.get(2).initData();
                         break;
                     case  R.id.rb_contentfragment_service:
                         vp_contentfragment_pager.setCurrentItem(3,false);
+                        pagelist.get(3).initData();
                         break;
                     case  R.id.rb_contentfragment_setting:
                         vp_contentfragment_pager.setCurrentItem(4,false);
+                        pagelist.get(4).initData();
                         break;
                 }
             }
@@ -62,10 +67,12 @@ public class ContentFragment extends Fragment {
         pagelist.add(new GovmentPage(getActivity()));
         pagelist.add(new SmartServicePage(getActivity()));
         pagelist.add(new SettingPage(getActivity()));
-        vp_contentfragment_pager.setAdapter(new MyFragmentViewpagerAdapter());
+        vp_contentfragment_pager.setAdapter(new MyFragmentViewPagerAdapter());
+        //因为RadioGroup为一个多个的单选组按钮 所以可以在开始的时候就设置一个处于开启的状态 的单选按钮
+        rg_contentfragment_bottom.check(R.id.rb_contentfragment_home);//让home成为默认的页面
         return view;
     }
-    class MyFragmentViewpagerAdapter extends PagerAdapter{
+    class MyFragmentViewPagerAdapter extends PagerAdapter{
 
         @Override
         public int getCount() {
@@ -74,7 +81,7 @@ public class ContentFragment extends Fragment {
 
         @Override
         public boolean isViewFromObject(View view, Object object) {
-            return false;
+            return view==object;
         }
 
         @Override
@@ -89,4 +96,14 @@ public class ContentFragment extends Fragment {
 //            super.destroyItem(container, position, object);
         }
     }
+    public NewsPage getNewsPage(){
+
+        if (pagelist!=null)
+            return (NewsPage) pagelist.get(1);
+
+        return  null;
+
+    }
+
+
 }

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.Gravity;
 import android.widget.TextView;
 
+import com.example.administrator.newclient.HomeActivity;
 import com.example.administrator.newclient.page.BasePage;
 
 /**
@@ -21,13 +22,14 @@ public class SmartServicePage extends BasePage{
     @Override
     public void initData() {
         tv_page_title.setText("服务");
-
-
+        ll_page_content.removeAllViews();
         TextView tv= new TextView(mActivity);
         tv.setText("服务内容" );
         tv.setGravity(Gravity.CENTER);
-        
         ll_page_content.addView(tv);
+
+        HomeActivity homeActivity= (HomeActivity) mActivity;
+        homeActivity.setSilidingMenuEnable(false);
     }
 
 
