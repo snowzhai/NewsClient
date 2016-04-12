@@ -24,6 +24,7 @@ public class LeftMenuFragment extends Fragment {
     Categories categories;
     private MyleftMenulistAdapter adapter;
     private ContentFragment contentFragment;
+    private int currentPostion;
 
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -41,7 +42,9 @@ public class LeftMenuFragment extends Fragment {
                 newsPage.setNewsType(position);//将得到的是什么类型的告诉NewsPage页面
                 homeactivity.setSlidingMenuToggle();
                 final TextView tv = (TextView) view.findViewById(R.id.tv_menulistitem_category);
-                tv.setEnabled(true);
+                currentPostion=position;
+                adapter.notifyDataSetChanged();
+//                tv.setEnabled(true);
 
             }
         });
@@ -69,6 +72,9 @@ public class LeftMenuFragment extends Fragment {
             View view = View.inflate(getActivity(), R.layout.menu_list_item, null);
             TextView tv_menulistitem_category = (TextView) view.findViewById(R.id.tv_menulistitem_category);
             tv_menulistitem_category.setText(categories.data.get(position).title);
+            if (position==currentPostion){
+                tv_menulistitem_category.setEnabled(true);
+            }
             return view;
         }
     }

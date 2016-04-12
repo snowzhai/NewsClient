@@ -18,7 +18,13 @@ public class Categories {
         public  int id;
         public String url;
         public String url1;
-
+        public ArrayList<ChildrenInfo>  children;
+        public class ChildrenInfo{
+            public int id;
+            public String title;
+            public int type;
+            public String url;
+        }
         @Override
         public String toString() {
             return "NewsTypeInfo{" +
