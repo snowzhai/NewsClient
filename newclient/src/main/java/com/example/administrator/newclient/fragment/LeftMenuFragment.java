@@ -34,12 +34,12 @@ public class LeftMenuFragment extends Fragment {
         View view = inflater.inflate(R.layout.slidingmenu, null);
         final HomeActivity homeactivity = (HomeActivity) getActivity();
         contentFragment = homeactivity.getContentFragment();
-        lv_slidingmenu_type = (ListView) view.findViewById(R.id.lv_slidingmenu_type);
+        lv_slidingmenu_type = (ListView) view.findViewById(R.id.lv_slidingmenu_type);//为侧滑的菜单设置了listview的布局
         lv_slidingmenu_type.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 NewsPage newsPage = contentFragment.getNewsPage();
-                newsPage.setNewsType(position);//将得到的是什么类型的告诉NewsPage页面
+                newsPage.setNewsType(position);//将得到的是什么类型的告诉content页面 然后主页面去刷新它里面的view
                 homeactivity.setSlidingMenuToggle();
                 final TextView tv = (TextView) view.findViewById(R.id.tv_menulistitem_category);
                 currentPostion=position;

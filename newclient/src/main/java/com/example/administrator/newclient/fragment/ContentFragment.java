@@ -99,7 +99,7 @@ public class ContentFragment extends Fragment {
     public NewsPage getNewsPage(){
 
         if (pagelist!=null)
-            return (NewsPage) pagelist.get(1);
+            return (NewsPage) pagelist.get(1);//这里默认返回1是指当侧边栏点击时默认让新闻中心刷新view
 
         return  null;
 

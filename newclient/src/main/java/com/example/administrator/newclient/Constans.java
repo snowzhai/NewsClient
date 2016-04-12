@@ -5,5 +5,5 @@ package com.example.administrator.newclient;
  */
 public class Constans {
     //这里是写的本机的IP和端口号 里面没再写 方便更改
-    public static String SERVER_ADDR="http://10.0.2.2:8080/zhbj";
+    public static String SERVER_ADDR="http://192.168.3.27:8080/zhbj";
 }

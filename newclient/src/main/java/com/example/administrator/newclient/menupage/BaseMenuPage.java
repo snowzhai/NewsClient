@@ -15,7 +15,6 @@ public abstract class BaseMenuPage {
         this.mActivity = mActivity;
     }
     public void initmRootView(){
-
         mRootView=initView();
     }
     public abstract View initView();

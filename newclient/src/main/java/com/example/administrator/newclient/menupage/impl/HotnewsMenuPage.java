@@ -14,6 +14,7 @@ import com.viewpagerindicator.TabPageIndicator;
 /**
  * Created by Administrator on 2016/4/12.
  */
+//这给页面主要是实现侧边栏当点击新闻的时候出现的界面
 public class HotnewsMenuPage extends BaseMenuPage {
     private Categories.NewsTypeInfo menupageInfo;
     private ViewPager vp_hotnewsmenupage_class;
@@ -24,9 +25,9 @@ public class HotnewsMenuPage extends BaseMenuPage {
 
         menupageInfo=menuinfo;
     }
+    //初始化控件
     @Override
     public View initView() {
-
         final View view = View.inflate(mActivity, R.layout.hotnews_menupage, null);
         vp_hotnewsmenupage_class = (ViewPager) view.findViewById(R.id.vp_hotnewsmenupage_class);
         //找到ViewPagerIndicator的控件

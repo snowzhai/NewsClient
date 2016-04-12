@@ -28,6 +28,7 @@ import java.util.List;
 /**
  * Created by snow on 2016/4/11.
  */
+//这是当点击主界面的新闻中心时候调用的
 public class NewsPage extends BasePage{
     List<BaseMenuPage> typelist;
 
@@ -56,7 +57,7 @@ public class NewsPage extends BasePage{
             }
         });
 
-        //从这里用xutils到服务器去拿数据  10.0.2.2为模拟器专用的自动拿到当前IP
+        //从这里用xutils到服务器去拿数据 用来初始化侧滑菜单上的信息 10.0.2.2为模拟器专用的自动拿到当前IP
         HttpUtils http = new HttpUtils();
         http.send(HttpRequest.HttpMethod.GET, Constans.SERVER_ADDR+"/categories.json", new RequestCallBack<String>() {
             Categories categories;
@@ -67,7 +68,7 @@ public class NewsPage extends BasePage{
                 Gson gson = new Gson();
                 categories=gson.fromJson(result,Categories.class);
                 ((HomeActivity) mActivity).getLeftMenuFragment().setCategories(categories);
-
+                //当点击新闻中心的时候就会初始化旁边的侧滑菜单
                 Log.i("哈哈",categories.toString());
                 typelist.add( new HotnewsMenuPage(mActivity,categories.data.get(0)));
                 typelist.add( new TopicNewsMenuPage(mActivity,categories.data.get(1)));
@@ -83,6 +84,7 @@ public class NewsPage extends BasePage{
 
 
     }
+    //当点击新闻中心的时候会调用 在这里初始化左边侧滑菜单的父类BaseMenuPage
     public void setNewsType(int i){
         final BaseMenuPage page = typelist.get(i);
         page.initmRootView();
