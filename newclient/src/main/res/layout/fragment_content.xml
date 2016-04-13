@@ -19,7 +19,7 @@
         android:orientation="horizontal"
         android:gravity="center"
         android:id="@+id/rg_contentfragment_bottom"
-        android:background="@drawable/bottom_tab_bg">
+        android:background="#55ff0000">
 
         <RadioButton
             android:layout_weight="1"

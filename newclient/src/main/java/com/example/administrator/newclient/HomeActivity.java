@@ -40,6 +40,9 @@ public class HomeActivity extends SlidingFragmentActivity {
         fragmentTransaction.commit();
 
     }
+    public  SlidingMenu getMySlidingMenu(){
+        return  slidingMenu;
+    }
     public void setSilidingMenuEnable(boolean enable){
         if (enable){
             slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);//让侧滑菜单显示
@@ -59,6 +62,7 @@ public class HomeActivity extends SlidingFragmentActivity {
         return leftmenufragment;
 
     }
+
     public ContentFragment getContentFragment(){
         //返回成员变量
         //方法1；

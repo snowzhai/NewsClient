@@ -6,9 +6,11 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.administrator.newclient.HomeActivity;
 import com.example.administrator.newclient.R;
 import com.example.administrator.newclient.bean.Categories;
 import com.example.administrator.newclient.menupage.BaseMenuPage;
+import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.viewpagerindicator.TabPageIndicator;
 
 /**
@@ -40,6 +42,26 @@ public class HotnewsMenuPage extends BaseMenuPage {
         //使用ViewPagerIndicator的开源控件 实现页面上屏幕滑动的小点变化效果
         vp_hotnewsmenupage_class.setAdapter(new MyhotnewsmenupageViewPager());
         indicator_hotnewsmenupage_title.setViewPager(vp_hotnewsmenupage_class);
+
+        //如果vp 设置了Indicator，那么它的PageChangeListener 应该给到Indicator
+        //这里主要是为了解决在新闻界面 在北京 中国 国际等的在它的第一张图的时候会划出侧边栏的问题 在这里做了判断 如果是第一个即北京的时候才能划出来 别的不能划出来
+        indicator_hotnewsmenupage_title.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            final HomeActivity mActivity = (HomeActivity) HotnewsMenuPage.this.mActivity;
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                if (position==0){
+                    mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+                }else {
+                    mActivity.getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+                }
+            }
+            @Override
+            public void onPageSelected(int position) {
+            }
+            @Override
+            public void onPageScrollStateChanged(int state) {
+            }
+        });
 
     }
     class MyhotnewsmenupageViewPager extends PagerAdapter{
