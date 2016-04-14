@@ -39,7 +39,7 @@ public class HotnewsMenuPage extends BaseMenuPage {
 
     @Override
     public void initData() {
-        //使用ViewPagerIndicator的开源控件 实现页面上屏幕滑动的小点变化效果
+        //使用ViewPagerIndicator的开源控件 实现页面上屏幕滑动的并且改变上面标题的变化效果
         vp_hotnewsmenupage_class.setAdapter(new MyhotnewsmenupageViewPager());
         indicator_hotnewsmenupage_title.setViewPager(vp_hotnewsmenupage_class);
 

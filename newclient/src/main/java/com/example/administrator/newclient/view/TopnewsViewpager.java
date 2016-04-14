@@ -61,6 +61,8 @@ public class TopnewsViewpager extends ViewPager {
 
                         }
                     }
+                }else {//当上下移动的时候让父控件来处理
+                    getParent().requestDisallowInterceptTouchEvent(false);
                 }
                 break;
             case MotionEvent.ACTION_UP:

@@ -25,7 +25,7 @@ public class HomeActivity extends SlidingFragmentActivity {
         //得到一个侧滑的菜单
         slidingMenu = getSlidingMenu();
         slidingMenu.setMode(SlidingMenu.LEFT);//设置划出来的方向
-        slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
+        slidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);//设置全屏幕都可以划出控件来
         slidingMenu.setBehindOffset(350);//设置漏出来的页面的长度（像素）
         //得到碎片管理者
         FragmentManager fragmentManager = getFragmentManager();

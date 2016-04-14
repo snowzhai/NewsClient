@@ -58,7 +58,7 @@ public class HotNewsMenuPageDetail {
         mRootView=view;
     }
     public void initData() {
-        //开源Google框架获得json数据
+        //开源Google框架获得gson数据
         String url = Constans.SERVER_ADDR+ childrenInfo.url;
         HttpUtils httpUtils = new HttpUtils();
         httpUtils.send(HttpRequest.HttpMethod.GET, url, new RequestCallBack<String>() {
@@ -69,7 +69,9 @@ public class HotNewsMenuPageDetail {
                 Log.i("哈哈", menuDetialNews.toString());
                 vp_hotnewsdetail_picture.setAdapter(new MyViewPagerAdapter());
                 indicator_hotnewstop_indicator.setViewPager(vp_hotnewsdetail_picture);//实现图片上的小点的移动
+                //有indicator_hotnewstop_indicator的话setOnPageChangeListener应该设在indicator上
                 indicator_hotnewstop_indicator.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+
                     @Override
                     public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                         tv_topnews_title.setText(menuDetialNews.data.topnews.get(position).title);

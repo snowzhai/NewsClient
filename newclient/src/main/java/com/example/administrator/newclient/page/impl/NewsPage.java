@@ -74,7 +74,8 @@ public class NewsPage extends BasePage{
                 typelist.add( new TopicNewsMenuPage(mActivity,categories.data.get(1)));
                 typelist.add( new PictureNewsMenuPage(mActivity,categories.data.get(2)));
                 typelist.add( new InteractNewsMenuPage(mActivity,categories.data.get(3)));
-
+                //将新闻界面的默认界面改成新闻界面
+                setNewsType(0);
             }
             @Override
             public void onFailure(HttpException e, String s) {
