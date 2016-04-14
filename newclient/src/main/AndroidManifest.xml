@@ -18,6 +18,7 @@
         </activity>
         <activity android:name=".HomeActivity"
             android:theme="@style/Theme.PageIndicatorDefaults"></activity>
+        <activity android:name=".ShowNewsActivity"/>
     </application>
 
 </manifest>
