@@ -11,50 +11,59 @@
         android:layout_height="wrap_content">
 
         <TextView
+            android:id="@+id/tv_page_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="标题"
-            android:textSize="20sp"
-            android:gravity="center"
             android:background="@drawable/title_red_bg"
-            android:id="@+id/tv_page_title"
-            />
+            android:gravity="center"
+            android:text="标题"
+            android:textSize="20sp" />
+
         <ImageButton
+            android:id="@+id/bt_shownews_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/bt_shownews_back"
-            android:background="@drawable/back"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            android:onClick="back"
-            />
+            android:background="@drawable/back"
+            android:onClick="back" />
 
         <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:id="@+id/bt_shownews_share"
-            android:background="@drawable/icon_share"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            />
-
-        <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/bt_shownews_size"
-            android:background="@drawable/icon_textsize"
+            android:onClick="share"
+            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_toLeftOf="@id/bt_shownews_share"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/icon_share" />
+
+        <ImageButton
+            android:id="@+id/bt_shownews_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginRight="3dp"
-            />
+            android:onClick="resize"
+            android:layout_toLeftOf="@id/bt_shownews_share"
+            android:background="@drawable/icon_textsize" />
     </RelativeLayout>
 
-    <WebView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/wv_shownews_content"></WebView>
+        android:layout_height="match_parent">
 
+        <WebView
+            android:id="@+id/wv_shownews_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></WebView>
 
+        <ProgressBar
+            android:id="@+id/pb_shownews_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:indeterminateDrawable="@drawable/progerssbarbg" />
+    </RelativeLayout>
 </LinearLayout>
